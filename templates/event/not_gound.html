@@ -1,0 +1,18 @@
+{% extends 'event/category.html' %}
+
+{% block navbar %}
+    {% include 'includes/category.html' %}
+{% endblock navbar %}
+
+{% block content %}
+    <div class="container">
+    <div class="not-found" style="display: flex; flex-direction: column; align-items: center;">
+    <img width="60%" src="../../static/images/bad-luck.gif">
+        <h2 class="lineHeight-xl fontSize-xl fontWeight-5 c-black breakPointM-lineHeight-xxl breakPointM-fontSize-xxl">Oh no, bad luck!</h2>
+        <h3 class="lineHeight-l fontSize-l fontWeight-3 c-slate breakPointM-lineHeight-xl breakPointM-fontSize-xl">
+            The page you’re looking for could have been deleted or never have existed.
+        </h3>
+    </div>
+    </div>
+
+{% endblock %}

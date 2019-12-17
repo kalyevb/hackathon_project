@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div class="dastan">
+		<div id="header">
+
+			<a href="{% url 'index' %}"><span class="logo">GetFun</span></a>
+			{% if request.user.is_authenticated %}
+			
+			<span class="user">
+				{% if request.user.is_authenticated %}
+				Hello {{ request.user.first_name }},
+				<a href="{% url 'logout' %}">Logout</a>
+				{% else %}
+				<a href="{% url 'login' %}">Log-in</a>
+				{% endif %}
+			</span>
+		</div>
+		{% endif %}
+		<span class="user">
+				{% block content %}
+				{% endblock %}
+        </span>
+	    </div>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'includes/category.html' %}
+{% endblock navbar %}
+{% block content %}
+    <div class="blog">
+        <div class="container">
+            <div class="row">
+
+                <!-- Blog Content -->
+                <div class="col-lg-8">
+                    <div class="blog_content">
+                        <div class="blog_title">{{ event.title }}</div>
+                    <hr>
+                        <div class="blog_meta">
+                            <ul>
+                                <div id='favourite-section'>
+                                {% if user.is_authenticated %}
+                                    {% if is_favourite %}<!--
+<button type="button" class="btn btn-warning">Is favorite</button></a> -->
+                                        <a href="{% url 'favorite_event' pk=event.pk %}"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                                                              }
+                                                                                              width="32" height="32"
+                                                                                              viewBox="0 0 172 172"
+                                                                                              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M2.65391,86c0,-46.02344 37.32266,-83.34609 83.34609,-83.34609c46.02344,0 83.34609,37.32266 83.34609,83.34609c0,46.02344 -37.32266,83.34609 -83.34609,83.34609c-46.02344,0 -83.34609,-37.32266 -83.34609,-83.34609z" fill="#f1c40f"></path><path d="M86,32.88828l16.39375,33.19063l36.61719,5.34141l-26.50547,25.83359l6.24844,36.48281l-32.75391,-17.23359l-32.7875,17.23359l6.28203,-36.48281l-26.50547,-25.83359l36.61719,-5.34141z" fill="#ffffff"></path></g></g></svg></a>
+                                    {% else %}
+                                        <a href="{% url 'favorite_event' pk=event.pk %}"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                                                              width="32" height="32"
+                                                                                              viewBox="0 0 172 172"
+                                                                                              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M2.65391,86c0,-46.02344 37.32266,-83.34609 83.34609,-83.34609c46.02344,0 83.34609,37.32266 83.34609,83.34609c0,46.02344 -37.32266,83.34609 -83.34609,83.34609c-46.02344,0 -83.34609,-37.32266 -83.34609,-83.34609z" fill="#000000"></path><path d="M86,32.88828l16.39375,33.19063l36.61719,5.34141l-26.50547,25.83359l6.24844,36.48281l-32.75391,-17.23359l-32.7875,17.23359l6.28203,-36.48281l-26.50547,-25.83359l36.61719,-5.34141z" fill="#ffffff"></path></g></g></svg></a>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                                     width="32" height="32"
+                                                                     viewBox="0 0 172 172"
+                                                                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M2.65391,86c0,-46.02344 37.32266,-83.34609 83.34609,-83.34609c46.02344,0 83.34609,37.32266 83.34609,83.34609c0,46.02344 -37.32266,83.34609 -83.34609,83.34609c-46.02344,0 -83.34609,-37.32266 -83.34609,-83.34609z" fill="#000000"></path><path d="M86,32.88828l16.39375,33.19063l36.61719,5.34141l-26.50547,25.83359l6.24844,36.48281l-32.75391,-17.23359l-32.7875,17.23359l6.28203,-36.48281l-26.50547,-25.83359l36.61719,-5.34141z" fill="#ffffff"></path></g></g></svg></a>
+
+                                {% endif %}
+
+
+                                <a href="http://vk.com/share.php?url=http://localhost:8000/{{ event.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <img src="../../static/images/1486053615-vk_79192.png">
+                                </a>
+                                <a href="https://twitter.com/share?url=http://localhost:8000/{{ event.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <img src="../../static/images/tw.png">
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/{{ event.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <img src="../../static/images/fb.png">
+                                </a>
+                                </div>
+                            </ul>
+                        </div>
+
+                        <hr>
+                        <img src="{{ event.foto.url }}" alt="" height="300">
+                        <p>{{ event.desecription }}</p>
+                    </div>
+                    <!-- Tags -->
+                    <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                        <div class="blog_tags">
+                            <span>Теги: </span>
+                            <ul>
+                                {% for tag in event.tags.all %}
+                                    <li><a href="{% url 'tag' pk=tag.id %}">{{ tag.title  }}  </a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Comments -->
+                    <div class="comments_container">
+                        <div class="comments_title"><span>{{ comment_form.count }}</span> Comments</div>
+                        <ul class="comments_list">
+                            {% for comment in comment_form %}
+                                <li>
+                                    <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
+                                        <div class="comment_image"><div><img src="../../static/images/comment_1.jpg" alt=""></div></div>
+                                        <div class="comment_content">
+                                            <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
+                                                <div class="comment_author"><a href="">{{ comment.user.username }}</a></div>
+                                                <div class="comment_rating"><div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div></div>
+                                                <div class="comment_time ml-auto">{{ comment.created_on }}</div>
+                                            </div>
+                                            <div class="comment_text">
+                                                <p>{{ comment.text | linebreaks }}</p>
+                                            </div>
+                                            <div class="comment_extras d-flex flex-row align-items-center justify-content-start">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                        <div class="add_comment_container">
+                            <div class="add_comment_title">Write a comment</div>
+                            <div class="add_comment_text">Your email address will not be published. Required fields are marked *</div>
+                            <form  class="comment_form" method="post" action="{% url 'event_detail' pk=event.pk %}">
+                                <div>
+                                    <div class="form_title">Review*</div>
+                                    <textarea class="comment_input comment_textarea" required="required" type="text" id="formGroupExampleInput" name="text"></textarea>
+                                    {% csrf_token %}
+                                </div>
+                                <div>
+{#                                    <button type="submit" class="comment_button trans_200">submit</button>#}
+                                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+
+                    <!-- Categories -->
+                    <div class="sidebar_section">
+                        <div class="sidebar_section_title">Информация</div>
+                        <div class="sidebar_categories">
+                            <ul class="categories_list">
+                                <li><a href="#" class="clearfix">Дата<span>{{ event.date }}</span></a></li>
+                                <li><a href="#" class="clearfix">Адрес<span>{{ event.adress }}</span></a></li>
+                                <li><a href="#" class="clearfix">Цена<span>{{  event.price }}</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
